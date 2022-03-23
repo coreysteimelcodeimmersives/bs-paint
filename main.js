@@ -49,6 +49,15 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+let brush = document.querySelector(".current-brush");
+
+let colors = document.querySelector('.palette');
+
+let canvas = document.querySelector('.canvas');
+
+let squares = document.querySelectorAll('.canvas div');
+
+let mouseDown = false;
 
 
 /****************************
@@ -61,7 +70,56 @@ while (count <= gridWidth * gridWidth) {
 // run as event listeners (after the next step is set up) isn't a
 // bad idea for testing purposes.
 
+colors.addEventListener('click', function(event){
+  if (event.target.tagName == 'DIV'){
+    brush.classList.remove(`${brush.classList[1]}`);
+    brush.classList.add(`${event.target.classList[1]}`);
+  }
+  
+})
 
+for (let i = 0; i < squares.length; i++){
+  let square = squares[i];
+  square.addEventListener('click', function(){
+    if (mouseDown === false){
+      square.classList.remove(`${square.classList[1]}`);
+      square.classList.add(`${brush.classList[1]}`);
+    }
+  })
+
+  square.addEventListener('mouseenter', function(){
+    if (mouseDown === true){
+      square.classList.remove(`${square.classList[1]}`);
+      square.classList.add(`${brush.classList[1]}`);
+    }
+  });
+}
+
+document.addEventListener('mousedown', function(){
+  mouseDown = true;
+});
+
+document.addEventListener('mouseup', function(){
+  mouseDown = false;
+})
+
+// canvas.addEventListener('click', function(event){
+//   if (event.target.tagName == 'DIV'){
+//     // console.log('working')
+    // event.target.classList.remove(`${event.target.classList[1]}`);
+    // event.target.classList.add(`${brush.classList[1]}`);
+//   }
+// })
+
+// canvas.addEventListener('mouseenter', function(event){
+//   console.log('hello')
+//   console.log(event.target);
+//   if (event.target.tagName == 'DIV'){
+//     console.log('working')
+//     event.target.classList.remove(`${event.target.classList[1]}`);
+//     event.target.classList.add(`${brush.classList[1]}`);
+//   }
+// })
 
 /**************************
  * WIRING IT ALL TOGETHER *

@@ -49,6 +49,10 @@ while (count <= gridWidth * gridWidth) {
 // Add queries for all your squares, palette colors, and brush here.
 // (Note the singular or plural used in that sentence!)
 
+let darkModeTrue = false;
+
+// let classColor;
+
 let brush = document.querySelector(".current-brush");
 
 let colors = document.querySelector('.paint-colors');
@@ -81,27 +85,21 @@ let currentBrush = document.querySelector('.current-brush')
 // bad idea for testing purposes.
 
 colors.addEventListener('click', function(event){
-  if (event.target.tagName == 'DIV'){
-    brush.classList.remove(`${brush.classList[1]}`);
-    brush.classList.add(`${event.target.classList[1]}`);
-  }
-  
+  console.log(event.target.classList)
+  swapColor(brush, event.target);
 });
 
 for (let i = 0; i < squares.length; i++){
   let square = squares[i];
   square.addEventListener('click', function(){
     if (mouseDown === false){
-      console.log(brush.classList);
-      square.classList.remove(`${square.classList[1]}`);
-      square.classList.add(`${brush.classList[1]}`);
+      swapColor(square, brush);
     }
   })
 
   square.addEventListener('mouseenter', function(){
     if (mouseDown === true){
-      square.classList.remove(`${square.classList[1]}`);
-      square.classList.add(`${brush.classList[1]}`);
+      swapColor(square, brush);
     }
   });
 };
@@ -115,24 +113,32 @@ document.addEventListener('mouseup', function(){
 });
 
 darkModeButton.addEventListener('click', function(){
+  if (darkModeTrue === false){
+    darkModeTrue = true;
+    console.log('dark mode baby')
+  } else {
+    darkModeTrue = false;
+    console.log('light mode')
+  }
   darkModeButton.classList.toggle('buttonDarkMode');
   body.classList.toggle('bodyDarkMode')
   paletteIcon.classList.toggle('palette-iconDarkMode')
-  if (currentBrush.classList[1] == 'color-18'){
-    console.log('working')
-    currentBrush.classList.remove('color-18');
-    currentBrush.classList.add('color-18DarkMode');
-    console.log(currentBrush.classList)
+  if (darkModeTrue === false){
+    console.log('Now In Light Mode')
+    swapColorWithColor(currentBrush, 'color-18')
   } else {
-    console.log('working')
-    currentBrush.classList.remove('color-18DarkMode');
-    currentBrush.classList.add('color-18');
-    console.log(currentBrush.classList)
+    console.log('Now In Dark Mode')
+    swapColorWithColor(currentBrush, 'color-18DarkMode');
   }
-
   for (let i = 0; i < paintColors.children.length; i++){
     let color = paintColors.children[i];
-    color.classList.toggle(`color-${i+1}DarkMode`);
+    let newColor;
+    if (darkModeTrue === true){
+      newColor = `color-${i+1}DarkMode`;
+    } else {
+      newColor = `color-${i+1}`;
+    }
+    swapColorWithColor(color, newColor)
   }
 });
 
@@ -144,3 +150,19 @@ darkModeButton.addEventListener('click', function(){
 // You'll need to add the appropriate event listener for each
 // square and for each palette color from the functions you
 // wrote above.
+
+
+// Helper function
+
+function swapColor(domToReplace, domColor){
+  let classColor = domToReplace.classList.item(1);
+  domToReplace.classList.remove(classColor);
+  classColor = domColor.classList.item(1);
+  domToReplace.classList.add(classColor);
+}
+
+function swapColorWithColor(domToReplace, color){
+  let classColor = domToReplace.classList.item(1);
+  domToReplace.classList.remove(classColor);
+  domToReplace.classList.add(color);
+}

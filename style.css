@@ -179,18 +179,18 @@ body{
   background-color: deeppink;
 }
 
-.color-15{
-  background-color: khaki;
-}
-.color-15DarkMode{
-  background-color: rosybrown;
-}
-
 .color-14{
   background-color: deepskyblue;
 }
 .color-14DarkMode{
   background-color: darkcyan;
+}
+
+.color-15{
+  background-color: purple;
+}
+.color-15DarkMode{
+  background-color: darkviolet;
 }
 
 .color-16{

@@ -1,8 +1,12 @@
+body{
+  background-color: lavender;
+}
 .app {
   display: flex;
-  height: 500px;
+  height: 700px;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
 }
 
 .headings {
@@ -11,51 +15,73 @@
   align-items: center;
 }
 
-.brush-selection {
-  height: 70px;
+.paint {
+  height: 550px;
   display: flex;
   flex-direction: column;
+  width: 700px;
   align-items: center;
 }
 
-.paint {
-  height: 250px;
+.brush-selection {
+  height: 125px;
   display: flex;
   flex-direction: column;
-  margin-top: 150px;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
 }
 
-.palette {
+.palette-pic {
   display: flex;
-  margin-left: -30px;
   flex-direction: row;
-  
-  
-}
-
-.brush {
-  display: flex;
-  flex-direction: column;
-}
-
-.icon {
-  width: 30px;
+  width: 60px;
   height: 30px;
+  margin-bottom: 2px;
 }
 
-.current-brush, .palette-color {
+.paint-colors{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 200px;
+}
+
+.palette-color{
   width: 30px;
   height: 30px;
   border: 1px solid black;
+  margin-right: 1px;
+  margin-top: 1px;
+}
+
+.palette-icon{
+  border: 1px solid black;
+  height: 30px;
+  width: 30px;
+  background-color: white;
+  margin-right: 1px;
+}
+
+.brush-icon{
+  height: 30px;
+  width: 30px;
+  border: solid 1px black;
+}
+
+.current-brush{
+  height: 32px;
+  width: 32px;
 }
 
 .canvas {
   display: grid;
-  grid-template-rows: repeat(10, 1fr);
-  grid-template-columns: repeat(10, 1fr);
-  height: 300px;
-  width: 300px;
-  border: 1px solid black;
+  grid-template-rows: repeat(30, 1fr);
+  grid-template-columns: repeat(30, 1fr);
+  height: 500px;
+  width: 500px;
+  border: 2px solid black;
+  margin-top: 1px;
 }
 
 .square {
@@ -64,25 +90,156 @@
 
 .color-1 {
   background-color: red;
-
+}
+.color-1DarkMode{
+  background-color: darkred;
 }
 
 .color-2 {
-  background-color: indigo;
-
+  background-color: blue;
+}
+.color-2DarkMode{
+  background-color: midnightblue;
 }
 
 .color-3 {
-  background-color: green;
-
+  background-color: yellow;
+}
+.color-3DarkMode{
+  background-color: sandybrown;
 }
 
 .color-4 {
-  background-color: blue;
-
+  background-color: palegreen;
+}
+.color-4DarkMode{
+  background-color: seagreen;
 }
 
 .color-5 {
-  background-color: white;
+  background-color: brown;
+}
+.color-5DarkMode{
+  background-color:sienna;
+}
 
+.color-6 {
+  background-color: forestgreen;
+}
+.color-6DarkMode{
+  background-color: darkolivegreen;
+}
+
+.color-7{
+  background-color: orange;
+}
+.color-7DarkMode{
+  background-color: darkorange;
+}
+
+.color-8{
+  background-color: purple;
+}
+.color-8DarkMode{
+  background-color: darkmagenta;
+}
+
+.color-9{
+  background-color: olive;
+}
+.color-9DarkMode{
+  background-color: darkgreen;
+}
+
+.color-10{
+  background-color: cornflowerblue;
+}
+.color-10DarkMode{
+  background-color: darkslateblue;
+}
+
+.color-11{
+  background-color: rosybrown;
+}
+.color-11DarkMode{
+  background-color: hotpink;
+}
+
+.color-12{
+  background-color: teal;
+}
+.color-12DarkMode{
+  background-color: darkturquoise;
+}
+
+.color-13{
+  background-color: lightpink;
+}
+.color-13DarkMode{
+  background-color: deeppink;
+}
+
+.color-15{
+  background-color: khaki;
+}
+.color-15DarkMode{
+  background-color: rosybrown;
+}
+
+.color-14{
+  background-color: deepskyblue;
+}
+.color-14DarkMode{
+  background-color: darkcyan;
+}
+
+.color-16{
+  background-color: palegoldenrod;
+}
+.color-16DarkMode{
+  background-color:darkgoldenrod;
+}
+
+.color-17{
+  background-color: indigo;
+}
+.color-17DarkMode{
+  background-color: darkorchid;
+}
+
+.color-18{
+  background-color: white;
+}
+.color-18DarkMode{
+  background-color: slategray;
+}
+
+button{
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  border: solid black 2px;
+  border-radius: 10px;
+  background-color: gold;
+}
+
+button:hover{
+  opacity: 0.3;
+}
+
+.buttonDarkMode{
+  margin: 20px;
+  padding: 10px;
+  font-weight: bold;
+  border: solid black 4px;
+  border-radius: 10px;
+  background-color: palegoldenrod;
+}
+
+.bodyDarkMode{
+  background-color: darkslateblue;
+}
+
+.palette-iconDarkMode{
+  background-color: slategray;
 }

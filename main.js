@@ -15,15 +15,15 @@
  * To make the second one happen, the number to change
  * is the first argument to `repeat`, currently set at 10.
  */
-const gridWidth = 10;
+const gridWidth = 30;
 let count = 0;
 while (count <= gridWidth * gridWidth) {
   const canvas = document.querySelector('.canvas');
   const div = document.createElement('div');
-  div.className = 'square color-5';
+  div.className = 'square color-18';
   canvas.appendChild(div);
   count++;
-}
+};
 
 // You probably should NOT do these in the order below.
 // That is, you probably should NOT do all the queries,
@@ -51,13 +51,23 @@ while (count <= gridWidth * gridWidth) {
 
 let brush = document.querySelector(".current-brush");
 
-let colors = document.querySelector('.palette');
+let colors = document.querySelector('.paint-colors');
 
 let canvas = document.querySelector('.canvas');
 
 let squares = document.querySelectorAll('.canvas div');
 
 let mouseDown = false;
+
+let darkModeButton = document.querySelector('button');
+
+let body = document.querySelector('body');
+
+let paletteIcon = document.querySelector('.palette-icon');
+
+let paintColors = document.querySelector('.paint-colors');
+
+let currentBrush = document.querySelector('.current-brush')
 
 
 /****************************
@@ -76,12 +86,13 @@ colors.addEventListener('click', function(event){
     brush.classList.add(`${event.target.classList[1]}`);
   }
   
-})
+});
 
 for (let i = 0; i < squares.length; i++){
   let square = squares[i];
   square.addEventListener('click', function(){
     if (mouseDown === false){
+      console.log(brush.classList);
       square.classList.remove(`${square.classList[1]}`);
       square.classList.add(`${brush.classList[1]}`);
     }
@@ -93,7 +104,7 @@ for (let i = 0; i < squares.length; i++){
       square.classList.add(`${brush.classList[1]}`);
     }
   });
-}
+};
 
 document.addEventListener('mousedown', function(){
   mouseDown = true;
@@ -101,25 +112,29 @@ document.addEventListener('mousedown', function(){
 
 document.addEventListener('mouseup', function(){
   mouseDown = false;
-})
+});
 
-// canvas.addEventListener('click', function(event){
-//   if (event.target.tagName == 'DIV'){
-//     // console.log('working')
-    // event.target.classList.remove(`${event.target.classList[1]}`);
-    // event.target.classList.add(`${brush.classList[1]}`);
-//   }
-// })
+darkModeButton.addEventListener('click', function(){
+  darkModeButton.classList.toggle('buttonDarkMode');
+  body.classList.toggle('bodyDarkMode')
+  paletteIcon.classList.toggle('palette-iconDarkMode')
+  if (currentBrush.classList[1] == 'color-18'){
+    console.log('working')
+    currentBrush.classList.remove('color-18');
+    currentBrush.classList.add('color-18DarkMode');
+    console.log(currentBrush.classList)
+  } else {
+    console.log('working')
+    currentBrush.classList.remove('color-18DarkMode');
+    currentBrush.classList.add('color-18');
+    console.log(currentBrush.classList)
+  }
 
-// canvas.addEventListener('mouseenter', function(event){
-//   console.log('hello')
-//   console.log(event.target);
-//   if (event.target.tagName == 'DIV'){
-//     console.log('working')
-//     event.target.classList.remove(`${event.target.classList[1]}`);
-//     event.target.classList.add(`${brush.classList[1]}`);
-//   }
-// })
+  for (let i = 0; i < paintColors.children.length; i++){
+    let color = paintColors.children[i];
+    color.classList.toggle(`color-${i+1}DarkMode`);
+  }
+});
 
 /**************************
  * WIRING IT ALL TOGETHER *

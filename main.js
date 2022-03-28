@@ -51,8 +51,6 @@ while (count <= gridWidth * gridWidth) {
 
 let darkModeTrue = false;
 
-// let classColor;
-
 let brush = document.querySelector(".current-brush");
 
 let colors = document.querySelector('.paint-colors');
